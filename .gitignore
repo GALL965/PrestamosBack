@@ -1,0 +1,5 @@
+# Evitar archivos sensibles
+.env
+node_modules/
+*.log
+.env.*
