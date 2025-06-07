@@ -9,12 +9,8 @@ const disponibilidadRoutes = require('./routes/disponibilidad.routes');
 
 const app = express();
 
-// CORS CONFIG: Permitir solo desde Firebase (puedes usar '*' para pruebas)
-app.use(cors({
-  origin: ['https://recursos360-91f5b.web.app'], // <-- cámbialo si cambia tu dominio
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type']
-}));
+// 🔥 CORS ABIERTO (para pruebas)
+app.use(cors());
 
 app.use(express.json());
 
