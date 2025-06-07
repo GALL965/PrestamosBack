@@ -9,8 +9,8 @@ exports.actualizarDisponibilidad = async (req, res) => {
 
     const registros = datos.map(item => ({
       id_admin: idAdmin,
-      dia: item.dia,
-      horario: item.horario,
+      dia: item.dia.trim(),
+      horario: item.horario.trim(),
       disponible: item.disponible
     }));
 
