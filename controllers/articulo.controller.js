@@ -55,20 +55,18 @@ exports.eliminarTodos = async (req, res) => {
   }
 };
 
-
-// En controllers/articulo.controller.js
 exports.obtenerPorAdmin = async (req, res) => {
   const { idAdmin } = req.params;
   const { categoria } = req.query;
 
   try {
-    const where = { id_admin: idAdmin };
+    const where = { id_proveedor: idAdmin };
     if (categoria) where.categoria = categoria;
 
     const articulos = await Articulo.findAll({ where });
     res.json(articulos);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener artículos' });
+    console.error("💥 ERROR en obtenerPorAdmin:", error);
+    res.status(500).json({ error: 'Error al obtener artículos', detalle: error.message });
   }
 };
