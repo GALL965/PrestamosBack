@@ -54,3 +54,21 @@ exports.eliminarTodos = async (req, res) => {
     res.status(500).json({ mensaje: 'Error al eliminar todos los artículos', error });
   }
 };
+
+
+// En controllers/articulo.controller.js
+exports.obtenerPorAdmin = async (req, res) => {
+  const { idAdmin } = req.params;
+  const { categoria } = req.query;
+
+  try {
+    const where = { id_admin: idAdmin };
+    if (categoria) where.categoria = categoria;
+
+    const articulos = await Articulo.findAll({ where });
+    res.json(articulos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener artículos' });
+  }
+};

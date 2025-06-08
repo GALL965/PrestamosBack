@@ -8,6 +8,7 @@ const {
   eliminarTodos
 } = require('../controllers/articulo.controller');
 
+router.get('/por-admin/:idAdmin', articuloController.obtenerPorAdmin);
 router.post('/', crearArticulo);
 router.get('/', obtenerArticulos);
 router.delete('/:id', eliminarArticulo);
