@@ -20,9 +20,10 @@ const Articulo = db.define('Articulo', {
   allowNull: false
   }
   estado: {
-    type: DataTypes.ENUM('Disponible', 'No disponible'),
-    defaultValue: 'Disponible'
+  type: DataTypes.STRING,
+  defaultValue: "Disponible"
   },
+
   razon_estado: {
     type: DataTypes.TEXT,
     allowNull: true
