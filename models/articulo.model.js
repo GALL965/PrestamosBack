@@ -16,14 +16,13 @@ const Articulo = db.define('Articulo', {
     allowNull: false
   },
   categoria: {
-  type: DataTypes.STRING,
-  allowNull: false
-  }
+    type: DataTypes.STRING,
+    allowNull: false
+  }, // 👈 AQUÍ estaba faltando la coma
   estado: {
-  type: DataTypes.STRING,
-  defaultValue: "Disponible"
+    type: DataTypes.STRING,
+    defaultValue: "Disponible"
   },
-
   razon_estado: {
     type: DataTypes.TEXT,
     allowNull: true
@@ -33,7 +32,7 @@ const Articulo = db.define('Articulo', {
     allowNull: false
   },
   foto: {
-    type: DataTypes.TEXT, // base64 o url
+    type: DataTypes.TEXT,
     allowNull: true
   }
 }, {
