@@ -16,9 +16,9 @@ const Articulo = db.define('Articulo', {
     allowNull: false
   },
   categoria: {
-    type: DataTypes.ENUM('Académico', 'Tecnología', 'Otro'),
-    allowNull: false
-  },
+  type: DataTypes.STRING,
+  allowNull: false
+  }
   estado: {
     type: DataTypes.ENUM('Disponible', 'No disponible'),
     defaultValue: 'Disponible'
