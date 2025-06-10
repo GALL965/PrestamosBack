@@ -41,3 +41,9 @@ const Prestamo = db.define('Prestamo', {
 });
 
 module.exports = Prestamo;
+
+const Usuario = require('./usuario.model');
+const Articulo = require('./articulo.model');
+
+Prestamo.belongsTo(Usuario, { as: 'alumno', foreignKey: 'id_alumno' });
+Prestamo.belongsTo(Articulo, { foreignKey: 'id_articulo' });
