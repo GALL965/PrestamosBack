@@ -74,3 +74,23 @@ exports.obtenerPrestamosDelDia = async (req, res) => {
     res.status(500).json({ error: "Error interno" });
   }
 };
+
+
+exports.eliminarPrestamosDelDia = async (req, res) => {
+  try {
+    const idAdmin = req.params.id;
+
+    const eliminados = await Prestamo.destroy({
+      where: {
+        id_admin: idAdmin
+        // También podrías filtrar por fecha actual si lo deseas
+        // fecha: new Date().toISOString().slice(0, 10)
+      }
+    });
+
+    res.json({ mensaje: `Eliminados ${eliminados} registros` });
+  } catch (err) {
+    console.error("❌ Error al eliminar préstamos del día:", err);
+    res.status(500).json({ error: "Error interno" });
+  }
+};

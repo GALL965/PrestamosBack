@@ -26,3 +26,4 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
+router.delete('/dia/:id', prestamoController.eliminarPrestamosDelDia);
