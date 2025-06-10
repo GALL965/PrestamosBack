@@ -34,3 +34,6 @@ exports.obtenerPrestamosDelDia = async (req, res) => {
     res.status(500).json({ error: "Error interno" });
   }
 };
+
+exports.crearPrestamo = async (...) => {...}
+exports.obtenerPrestamosDelDia = async (...) => {...}

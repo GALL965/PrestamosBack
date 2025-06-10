@@ -1,11 +1,15 @@
-const Prestamo = require('../models/prestamo.model'); 
 const express = require('express');
 const router = express.Router();
 const prestamoController = require('../controllers/prestamo.controller');
+const Prestamo = require('../models/prestamo.model'); // necesario para el delete directo
 
-// Todas las rutas deben estar ANTES del module.exports
+// Crear préstamo
 router.post('/', prestamoController.crearPrestamo);
-router.get('/dia/:id', prestamoController.obtenerPrestamosDelDia); // <- ¡Esta línea estaba después del export!
+
+// Obtener préstamos del día por admin
+router.get('/dia/:id', prestamoController.obtenerPrestamosDelDia);
+
+// Eliminar préstamo por ID
 router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id;
@@ -21,4 +25,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router; // <- El export debe ir al FINAL del archivo
+module.exports = router;
