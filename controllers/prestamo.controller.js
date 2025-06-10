@@ -51,7 +51,11 @@ exports.obtenerPrestamosDelDia = async (req, res) => {
     const prestamos = await Prestamo.findAll({
       where: {
         id_admin: idAdmin,
-        fecha: new Date().toISOString().slice(0, 10) // YYYY-MM-DD
+      // Elimina el filtro de fecha
+    where: {
+      id_admin: idAdmin
+       }
+
       },
       include: [
         { model: Usuario, as: 'alumno', attributes: ['nombre'], foreignKey: 'id_alumno' },
