@@ -1,3 +1,4 @@
+const Prestamo = require('../models/prestamo.model'); 
 const express = require('express');
 const router = express.Router();
 const prestamoController = require('../controllers/prestamo.controller');
