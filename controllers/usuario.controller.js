@@ -70,3 +70,13 @@ exports.loginUsuario = async (req, res) => {
     res.status(500).json({ error: "Error en login", detalles: err.message });
   }
 };
+
+
+exports.obtenerEstudiantes = async (req, res) => {
+  try {
+    const estudiantes = await Usuario.findAll({ where: { rol: 'Estudiante' } });
+    res.json(estudiantes);
+  } catch (err) {
+    res.status(500).json({ error: 'Error al obtener estudiantes', detalles: err.message });
+  }
+};

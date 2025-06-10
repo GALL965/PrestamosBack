@@ -3,7 +3,7 @@ const db = require('../config/database');
 
 const Puntuacion = db.define('Puntuacion', {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  nombre_estudiante: { type: DataTypes.STRING, allowNull: false },
+  id_estudiante: { type: DataTypes.INTEGER, allowNull: false },
   puntuacion: { type: DataTypes.INTEGER, allowNull: false },
   observaciones: { type: DataTypes.TEXT },
   fecha: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }

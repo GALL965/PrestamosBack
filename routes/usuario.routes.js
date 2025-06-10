@@ -22,3 +22,16 @@ router.get('/admins', obtenerAdministradores);
 router.post('/login', loginUsuario);
 
 module.exports = router;
+
+
+const {
+  crearUsuario,
+  obtenerUsuarios,
+  crearAdministrador,
+  obtenerAdministradores,
+  loginUsuario,
+  obtenerEstudiantes
+} = require('../controllers/usuario.controller');
+
+// Nueva ruta:
+router.get('/estudiantes', obtenerEstudiantes);
