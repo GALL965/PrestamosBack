@@ -8,13 +8,16 @@ const articuloRoutes = require('./routes/articulo.routes');
 const disponibilidadRoutes = require('./routes/disponibilidad.routes');
 const Prestamo = require('./models/prestamo.model');
 const app = express();
+const puntuacionRoutes = require('./routes/puntuacion.routes');
+
 
 // 🔥 CORS ABIERTO (para pruebas)
 app.use(cors());
 
 app.use(express.json());
 
-// Rutas
+// Ruta
+app.use('/api/puntuaciones', puntuacionRoutes);
 app.use('/api/prestamos', prestamoRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/articulos', articuloRoutes); 
