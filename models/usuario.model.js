@@ -15,11 +15,11 @@ const Usuario = db.define('Usuario', {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false
-},
+  },
   correo: {
-  type: DataTypes.STRING,
-  allowNull: false,
-  unique: true
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
   },
   rol: {
     type: DataTypes.ENUM('Estudiante', 'Profesor', 'Proveedor'),
@@ -28,13 +28,11 @@ const Usuario = db.define('Usuario', {
   contraseña: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  foto: {
+    type: DataTypes.TEXT,
+    allowNull: true
   }
-foto: {
-  type: DataTypes.TEXT,
-  allowNull: true
-}
-
-
 }, {
   tableName: 'usuarios',
   timestamps: false
