@@ -2,12 +2,21 @@ const Puntuacion = require('../models/puntuacion.model');
 
 exports.crearPuntuacion = async (req, res) => {
   try {
-    const { nombre_estudiante, puntuacion, observaciones } = req.body;
-    const nueva = await Puntuacion.create({ nombre_estudiante, puntuacion, observaciones });
+    const { id_estudiante, puntuacion, observaciones } = req.body;
+
+    // Validación básica
+    if (!id_estudiante || !puntuacion) {
+      return res.status(400).json({ error: "Faltan campos obligatorios" });
+    }
+
+    const nueva = await Puntuacion.create({ id_estudiante, puntuacion, observaciones });
     res.status(201).json(nueva);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Error al guardar la puntuación" });
+    console.error("💥 Error al guardar la puntuación:", err);
+    res.status(500).json({
+      error: "Error al guardar la puntuación",
+      detalles: err.message
+    });
   }
 };
 
@@ -16,7 +25,7 @@ exports.obtenerPuntuaciones = async (req, res) => {
     const datos = await Puntuacion.findAll();
     res.json(datos);
   } catch (err) {
-    console.error(err);
+    console.error("💥 Error al obtener puntuaciones:", err);
     res.status(500).json({ error: "Error al obtener puntuaciones" });
   }
 };
@@ -26,7 +35,7 @@ exports.eliminarTodas = async (req, res) => {
     await Puntuacion.destroy({ where: {} });
     res.json({ mensaje: "Todas las puntuaciones eliminadas" });
   } catch (err) {
-    console.error(err);
+    console.error("💥 Error al eliminar puntuaciones:", err);
     res.status(500).json({ error: "No se pudo eliminar" });
   }
 };
