@@ -24,8 +24,10 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ error: "Error interno" });
   }
 });
+router.delete('/alumno/:id', prestamoController.eliminarPrestamosPorAlumno);
 
 module.exports = router;
 router.delete('/dia/:id', prestamoController.eliminarPrestamosDelDia);
 
 router.get('/alumno/:id', prestamoController.obtenerPrestamosPorAlumno);
+

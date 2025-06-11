@@ -124,3 +124,15 @@ exports.obtenerPrestamosPorAlumno = async (req, res) => {
     res.status(500).json({ error: "Error interno" });
   }
 };
+
+
+exports.eliminarPrestamosPorAlumno = async (req, res) => {
+  try {
+    const idAlumno = req.params.id;
+    const eliminados = await Prestamo.destroy({ where: { id_alumno: idAlumno } });
+    res.json({ mensaje: `Eliminados ${eliminados} préstamos del alumno` });
+  } catch (err) {
+    console.error("❌ Error al eliminar préstamos del alumno:", err);
+    res.status(500).json({ error: "Error interno" });
+  }
+};
