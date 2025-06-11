@@ -94,3 +94,33 @@ exports.eliminarPrestamosDelDia = async (req, res) => {
     res.status(500).json({ error: "Error interno" });
   }
 };
+
+
+exports.obtenerPrestamosPorAlumno = async (req, res) => {
+  try {
+    const idAlumno = req.params.id;
+
+    const prestamos = await Prestamo.findAll({
+      where: { id_alumno: idAlumno },
+      include: [
+        { model: Usuario, as: 'alumno', attributes: ['nombre'] },
+        { model: Articulo, attributes: ['nombre'] }
+      ]
+    });
+
+    const resultado = prestamos.map(p => ({
+      id_prestamo: p.id_prestamo,
+      nombre_alumno: p.alumno?.nombre || "Desconocido",
+      fecha: p.fecha,
+      hora_inicio: p.hora_inicio,
+      hora_fin: p.hora_fin,
+      nombre_articulo: p.Articulo?.nombre || "Desconocido",
+      cantidad: p.cantidad
+    }));
+
+    res.json(resultado);
+  } catch (err) {
+    console.error("❌ Error al obtener préstamos del alumno:", err);
+    res.status(500).json({ error: "Error interno" });
+  }
+};
