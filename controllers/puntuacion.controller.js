@@ -20,9 +20,17 @@ exports.crearPuntuacion = async (req, res) => {
   }
 };
 
+const Usuario = require('../models/usuario.model');
+
 exports.obtenerPuntuaciones = async (req, res) => {
   try {
-    const datos = await Puntuacion.findAll();
+    const datos = await Puntuacion.findAll({
+      include: {
+        model: Usuario,
+        attributes: ['nombre']
+      }
+    });
+
     res.json(datos);
   } catch (err) {
     console.error("💥 Error al obtener puntuaciones:", err);

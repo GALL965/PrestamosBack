@@ -13,3 +13,10 @@ const Puntuacion = db.define('Puntuacion', {
 });
 
 module.exports = Puntuacion;
+
+const Usuario = require('./usuario.model');
+
+Puntuacion.belongsTo(Usuario, {
+  foreignKey: 'id_estudiante',
+  targetKey: 'id_usuario'
+});
