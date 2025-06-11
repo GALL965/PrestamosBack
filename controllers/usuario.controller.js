@@ -2,8 +2,8 @@ const Usuario = require('../models/usuario.model');
 
 exports.crearUsuario = async (req, res) => {
   try {
-    const { nombre, matricula, rol, contraseña, correo } = req.body;
-    const nuevoUsuario = await Usuario.create({ nombre, matricula, rol, contraseña, correo });
+    const { nombre, matricula, rol, contraseña, correo, foto } = req.body;
+    const nuevoUsuario = await Usuario.create({ nombre, matricula, rol, contraseña, correo, foto });
     res.status(201).json(nuevoUsuario);
   } catch (err) {
     res.status(500).json({ error: 'Error al crear el usuario', detalles: err.message });
@@ -23,7 +23,7 @@ exports.obtenerUsuarios = async (req, res) => {
 const MatriculaValida = require('../models/matricula.model');
 
 exports.crearAdministrador = async (req, res) => {
-  const { nombre, matricula, contraseña, correo } = req.body;
+  const { nombre, matricula, contraseña, correo, foto } = req.body;
   try {
     const existe = await MatriculaValida.findOne({ where: { matricula } });
     if (!existe) {
@@ -35,7 +35,8 @@ exports.crearAdministrador = async (req, res) => {
   matricula,
   rol: "Proveedor",
   contraseña,
-  correo
+  correo,
+  foto
   });
 
     res.status(201).json({ mensaje: "Administrador registrado correctamente", usuario: nuevoUsuario });

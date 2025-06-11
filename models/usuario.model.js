@@ -15,7 +15,6 @@ const Usuario = db.define('Usuario', {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false
-
 },
   correo: {
   type: DataTypes.STRING,
@@ -30,6 +29,12 @@ const Usuario = db.define('Usuario', {
     type: DataTypes.STRING,
     allowNull: false
   }
+foto: {
+  type: DataTypes.TEXT,
+  allowNull: true
+}
+
+
 }, {
   tableName: 'usuarios',
   timestamps: false
