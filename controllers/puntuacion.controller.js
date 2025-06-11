@@ -47,3 +47,18 @@ exports.eliminarTodas = async (req, res) => {
     res.status(500).json({ error: "No se pudo eliminar" });
   }
 };
+
+
+exports.obtenerPorEstudiante = async (req, res) => {
+  try {
+    const id_estudiante = req.params.id;
+    const datos = await Puntuacion.findAll({
+      where: { id_estudiante },
+      order: [['fecha', 'DESC']]
+    });
+    res.json(datos);
+  } catch (err) {
+    console.error("💥 Error al obtener puntuaciones por estudiante:", err);
+    res.status(500).json({ error: "Error al obtener puntuaciones del estudiante" });
+  }
+};

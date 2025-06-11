@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const ctrl = require('../controllers/puntuacion.controller');
@@ -8,3 +9,5 @@ router.delete('/', ctrl.eliminarTodas);
 
 module.exports = router;
 
+const { obtenerPorEstudiante } = require('../controllers/puntuacion.controller');
+router.get('/:id', obtenerPorEstudiante); 
